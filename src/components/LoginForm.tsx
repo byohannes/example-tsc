@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 export interface Props {
   onUsernameChange: (username: string) => void;
@@ -13,26 +13,26 @@ const LoginForm = (props: Props) => {
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(props.shouldRemember);
 
-  const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
     setUsername(value);
     props.onUsernameChange(value);
   };
 
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
     setPassword(value);
     props.onPasswordChange(value);
   };
 
-  const handleRememberChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { checked } = e.target;
+  const handleRememberChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { checked } = event.target;
     setRemember(checked);
     props.onRememberChange(checked);
   };
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
     props.onSubmit(username, password);
   };
 
